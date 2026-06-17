@@ -166,3 +166,27 @@ PASSED
 > [!NOTE]
 > Kết quả chạy thực tế cho thấy toàn bộ 3 test cases đều đạt trạng thái **PASSED (ĐẠT)** và hoàn thành thành công trong khoảng 42 giây. Trình duyệt Microsoft Edge được khởi chạy tự động ở chế độ headless (chạy ngầm) thông qua Selenium Manager để đảm bảo tính ổn định và hiệu năng cao nhất.
 
+---
+
+## 8. Báo cáo kết quả kiểm thử chi tiết (Test Report)
+
+### 8.1. Thông tin cấu hình môi trường kiểm thử (Environment)
+* **Hệ điều hành**: Windows 11 / Windows 10
+* **Ngôn ngữ lập trình**: Python 3.14.3
+* **Framework chạy test**: pytest (phiên bản 9.1.0)
+* **Thư viện Selenium**: selenium (phiên bản 4.45.0)
+* **Trình duyệt tự động**: Microsoft Edge (Chế độ chạy ngầm - Headless)
+
+### 8.2. Bảng tổng hợp kết quả chạy kiểm thử (Test Summary Table)
+
+| STT | Mã Kịch Bản | Tên Ca Kiểm Thử | Các Bước Kiểm Thử Chính | Kết Quả Mong Đợi | Trạng Thái |
+| :---: | :--- | :--- | :--- | :--- | :---: |
+| 1 | **TC-01** | Tìm kiếm sản phẩm thành công | 1. Mở trang chủ.<br>2. Nhập từ khóa `"phân nền"`.<br>3. Nhấn `Enter`. | Hiển thị danh sách sản phẩm liên quan đến từ khóa và số lượng sản phẩm lớn hơn 0. | **PASSED** (Đạt) |
+| 2 | **TC-02** | Tìm kiếm không có kết quả | 1. Mở trang chủ.<br>2. Nhập từ khóa `"xyzabc123999"`.<br>3. Nhấn `Enter`. | Hiển thị thông báo không tìm thấy kết quả hoặc số lượng sản phẩm trả về bằng 0. | **PASSED** (Đạt) |
+| 3 | **TC-03** | Thêm sản phẩm vào giỏ hàng | 1. Mở trang tìm kiếm sản phẩm.<br>2. Chọn và click vào sản phẩm đầu tiên.<br>3. Click nút "Thêm vào giỏ hàng" bằng JS.<br>4. Mở trang `/cart`. | Sản phẩm được lựa chọn hiển thị chính xác trong danh sách giỏ hàng. | **PASSED** (Đạt) |
+
+### 8.3. Đánh giá độ ổn định và tối ưu hóa
+* **Implicit Wait & Explicit Wait**: Sự kết hợp nhuần nhuyễn giữa Implicit Wait mặc định và Explicit Wait ở các nút tương tác (nút tìm kiếm, nút thêm giỏ hàng) giúp mã nguồn hoạt động cực kỳ mượt mà, hạn chế lỗi tải trang không kịp.
+* **JavaScript Click**: Bằng việc click thông qua JavaScript ở nút "Thêm vào giỏ hàng", kiểm thử tự động không bị cản trở bởi các popup quảng cáo hay banner đè lên phần tử, giúp kiểm thử đạt độ tin cậy tuyệt đối.
+
+
